@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Pacifico', cursive;
+    src: url('static/fonts/Pacifico.ttf');
+}
+
+.div {
+    font-family: 'Pacifico', cursive;
+}
+
+body{
+font-family: 'Pacifico', cursive;
+}
+
+.hero-image {
+  background-image: url("../img/bg.jpg");
+  background-color: #cccccc;
+  height: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: relative;
+  opacity: 0.96;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #337ab7;
+}
+
+.jumbotron .h1, .jumbotron h1 {
+    color: #FF689B;
+}
+
+.btn-success {
+    color: #333;
+    background-color: #FF689B;
+    border-color: #000;
+}
+.btn-success:hover{
+    color:#fff;
+    background-color:#CB6A8B;
+    border-color:#000}
+
+.btn-primary {
+    color: #333;
+    background-color: #337ab7;
+    border-color: #000;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #FF689B;
+}
+
+.jumbotron {
+    background-color: #CBCBCB;
+}
