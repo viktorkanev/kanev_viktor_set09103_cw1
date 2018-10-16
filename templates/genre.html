@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h2>Albums ordered by {{genre}}</h2><br>
+    {% for artist in artists if artist.genre == genre %}
+        <div>
+            <ul>
+                <li class="list-group-item">Artist: <a href="/collections/{{artist.name}}"> {{artist.name}}</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}

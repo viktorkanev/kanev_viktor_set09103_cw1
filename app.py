@@ -22,10 +22,28 @@ def collections():
 def artist(name):
     return render_template('artists.html', name=name, artists=Artists)
 
+@app.route('/genrecol/<string:genre>/')
+def genre(genre):
+    return render_template('genre.html', genre=genre, artists=Artists)
 
-@app.route('/register', methods=['POST', 'GET'])
-def register():
-    return render_template('register.html')
+@app.route('/genrecol')
+def genrecol():
+    return render_template('genrecol.html', artists=Artists)
+
+
+# @app.route('/register', methods=['POST', 'GET'])
+# def register():
+#     form = request.form
+#     if request.method == 'POST':
+#         email = form.get('email')
+#         password = form.get('passoword')
+#         return "your email is:" + email
+
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@
 
 body{
 font-family: 'Pacifico', cursive;
+
 }
 
 .hero-image {
@@ -67,4 +68,5 @@ color:#000;
 
 .list-group-item {
     opacity: 0.95;
+    font-size: 15px;
 }

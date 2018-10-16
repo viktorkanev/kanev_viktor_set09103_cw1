@@ -5,9 +5,9 @@
         {% for album in artist.albums %}
         <div>
             <ul>
-            <li class="list-group-item">Title: {{album.title}}</li>
-            <li class="list-group-item">Release date: {{album.release_date}}</li>
-            <li class="list-group-item">Number of songs: {{album.songs}}</li>
+            <li class="list-group-item"><p style="color:#FF689B">Title:</p>{{album.title}}</li>
+            <li class="list-group-item"><p style="color:#FF689B">Release date:</p> {{album.release_date}}</li>
+            <li class="list-group-item"><p style="color:#FF689B">Number of songs:</p> {{album.songs}}</li>
         </ul>
         </div>
     {% endfor %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>YourMusicLib</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script>
+	(function ($) {
+	  jQuery.expr[':'].Contains = function(a,i,m){
+		  return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+	  };
+
+	  function listFilter(header, list) {
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+			input = $("<input>").attr({"class":"filterinput","type":"text"});
+		$(form).append(input).appendTo(header);
+
+		$(input)
+		  .change( function () {
+			var filter = $(this).val();
+			if(filter) {
+			  $(list).find("a:not(:Contains(" + filter + "))").parent().slideUp();
+			  $(list).find("a:Contains(" + filter + ")").parent().slideDown();
+			} else {
+			  $(list).find("li").slideDown();
+			}
+			return false;
+		  })
+		.keyup( function () {
+			$(this).change();
+		});
+	  }
+
+	  $(function () {
+		listFilter($("#header"), $("#list"));
+	  });
+	}(jQuery));
+</script>
+</head>
+<body class="hero-image">
+{% include 'includes/_navbar.html' %}
+<div id="wrap" class="container">
+{% block body %}
+    <h2>Genres</h2>
+    <div>
+    <h3 id="header">Search</h3>
+        </div>
+    <ul id="list">
+    {% set genres = [] %}
+    {% for artist in artists if artist.genre not in genres %}
+
+        <li class="list-group-item"><a href="genrecol/{{artist.genre}}">{{artist.genre}}</a></li>
+    {% set genres = genres.append(artist.genre) %}
+    {% endfor %}
+    </ul>
+{% endblock %}
+</div>
+</body>
+</html>
+
