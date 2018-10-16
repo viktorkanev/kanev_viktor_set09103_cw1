@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h2>Albums by {{name}}</h2><br>
+    {% for artist in artists if artist.name == name %}
+        {% for album in artist.albums %}
+        <div>
+            <ul>
+            <li class="list-group-item">Title: {{album.title}}</li>
+            <li class="list-group-item">Release date: {{album.release_date}}</li>
+            <li class="list-group-item">Number of songs: {{album.songs}}</li>
+        </ul>
+        </div>
+    {% endfor %}
+    {% endfor %}
+{% endblock %}

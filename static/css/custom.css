@@ -50,6 +50,21 @@ font-family: 'Pacifico', cursive;
     color: #FF689B;
 }
 
-.jumbotron {
-    background-color: #CBCBCB;
+.h2,h2{
+    color: #FFF
+}
+
+.h3,h3{
+    position:static;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #FF689B;
+}
+
+input{
+color:#000;
+}
+
+.list-group-item {
+    opacity: 0.95;
 }
