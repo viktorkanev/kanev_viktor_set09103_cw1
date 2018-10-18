@@ -5,7 +5,7 @@
     <title>YourMusicLib</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
-    <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script src="{{ url_for ('static', filename='js/jquery-1.4.2.min.js')}}"></script>
     <script>
 	(function ($) {
 	  jQuery.expr[':'].Contains = function(a,i,m){
