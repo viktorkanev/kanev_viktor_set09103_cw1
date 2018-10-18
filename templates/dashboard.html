@@ -4,11 +4,23 @@
   <h2>Add Artist</h2>
   <form method="POST" action="">
     <div class="form-group">
-        <input type="text" id="name" name="name">
+        <h3>Artist name:</h3><input type="text" id="name" name="name">
     </div>
     <div class="form-group">
-      <input type="text" id>
+      <h3>Genre:</h3><input type="text" id="genre">
     </div>
-    <p><input class="btn btn-primary" type="submit" value="Submit">
+    <div class="form-group">
+      <h3>Album:</h3><input type="text" id="albums">
+    </div>
+    <div class="form-group">
+      <h3>Album titlte:</h3><input type="text" id="albums.title">
+    </div>
+    <div class="form-group">
+      <h3>Release date:</h3><input type="text" id="albums.release_date">
+    </div>
+    <div class="form-group">
+      <h3>Number of songs:</h3><input type="text" id="albums.songs">
+    </div>
+    <p><input class="btn btn-secondary" type="submit" value="Submit">
   </form>
 {% endblock %}
