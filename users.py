@@ -11,6 +11,18 @@ def Users():
             'email': 'tito@admin.com',
             'password': 'admin',
             'isAdmin': 'yes'
+        },
+        {
+            'id': 1,
+            'email': 'test@admin.com',
+            'password': 'admin',
+            'isAdmin': 'yes'
+        },
+        {
+            'id': 1,
+            'email': 'test@test',
+            'password': 'test',
+            'isAdmin': 'yes'
         }
     ]
 

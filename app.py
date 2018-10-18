@@ -1,21 +1,16 @@
 from flask import Flask, render_template, json, request, session, url_for, redirect, flash
 from artists import Artists
 from users import Users
-import bcrypt
 from functools import wraps
 
 
 app = Flask(__name__)
 app.secret_key = 'A0Zr98j /3 yX R~XHH!jmN]LWX/,?RT'
 Artists = Artists()
-Users = Users()
 
 def check_auth(email, password):
-   for user in Users:
-        useremail = user.get('email')
-        userpw = user.get('password')
-        print(userpw)
-   if(email == useremail and  password == userpw):
+   user_data = json.load(open('users.json'))
+   if(email == user_data.get('email') and  password == user_data.get('password')):
         return True
    return False
 
@@ -24,26 +19,29 @@ def requires_login(f):
     def decorated(*args, **kwargs):
         status = session.get('logged_in', False)
         if not status:
-            return redirect(url_for('.root'))
+            flash(u'You have to be logged in to access this page.', 'error')
+            return redirect(url_for('.login'))
         return f(*args, **kwargs)
     return decorated
 
 @app.route('/logout/')
 def logout():
     session['logged_in'] = False
-    return redirect(url_for('.root'))
+    return redirect(url_for('.login'))
 
 @app.route('/login', methods=['GET', 'POST'])
-def root():
+def login():
+    error = None
     if request.method == 'POST':
         user = request.form['email']
         pw = request.form['password']
 
         if check_auth(request.form['email'],request.form['password']):
             session['logged_in']= True
-            flash('You were successfully logged in!')
-            return redirect(url_for('.collections'))
-    return render_template('login.html')
+            return redirect(url_for('.dashboard'))
+        else:
+            error = "Invalid credentials"
+    return render_template('login.html', error=error)
 
 @app.route('/')
 def home():
@@ -66,6 +64,14 @@ def genre(genre):
 @app.route('/genrecol')
 def genrecol():
     return render_template('genrecol.html', artists=Artists)
+
+@app.route('/dashboard', methods = ['POST', 'GET'])
+@requires_login
+def dashboard():
+    if request.method == 'POST':
+        name = request.form['name']
+        Artists.update({'name':name})
+    return render_template('dashboard.html')
 
 
 # @app.route('/register', methods=['POST', 'GET'])
